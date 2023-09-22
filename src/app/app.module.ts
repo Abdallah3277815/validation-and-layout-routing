@@ -17,6 +17,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,26 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="handleLogin( )">
+
+
+    <div class="form-item" [formGroup]="loginForm">
+        <label for="email">Email</label>
+        <input class="form-control" type="email" formControlName="email" id="email">
+        <div *ngIf="loginForm.get('email')?.errors &&( loginForm.get('email')?.touched || loginForm.get('email')?.value.length >0)"
+            class="alert alert-danger">
+            <p *ngIf="loginForm.get('email')?.getError('required')">email is Required</p>
+            <p *ngIf="loginForm.get('email')?.getError('email')">email is not valid</p>
+        </div>
+    </div>
+    <div class="form-item" [formGroup]="loginForm">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" formControlName="password" id="password">
+        <div *ngIf="loginForm.get('password')?.errors &&( loginForm.get('password')?.touched || loginForm.get('password')?.value.length >0)"
+            class="alert alert-danger">
+            <p *ngIf="loginForm.get('password')?.getError('required')">password is Required</p>
+            <p *ngIf="loginForm.get('password')?.getError('pattern')">Must Be 6 chars at least</p>
+        </div>
+    </div>
+
+    <button  type="submit" class="main-btn">Register <span *ngIf="isLoading"><i
+                class="fas fa-spin  fa-spinner"></i></span></button>
+    <p *ngIf="errorMsg" class="alert alert-danger">{{errorMsg}}</p>
+</form>
